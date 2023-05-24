@@ -13,7 +13,7 @@ title {
     min-height: 80vh;
     display: flex;
     align-items: center;
-    background-image: url("../../../photo1.jpeg");
+    background-image: url("../../../background1.jpg");
     background-position: center;
     background-size: cover;
   }
