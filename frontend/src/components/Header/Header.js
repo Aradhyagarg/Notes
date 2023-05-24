@@ -4,12 +4,16 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <Navbar bg="primary" expand="lg" >
       <Container fluid>
-        <Navbar.Brand href="#">ZipperNotes</Navbar.Brand>
+      <Navbar.Brand href='#'>
+          <Link to="/">
+          Notes
+          </Link>
+          </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
             <Nav className='m-auto'>
@@ -26,7 +30,11 @@ const Header = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">My Notes</Nav.Link>
+            <Nav.Link href="/mynotes">
+              <Link to="/mynotes">
+              My Notes
+              </Link>
+              </Nav.Link>
             <NavDropdown title="Aradhya Garg" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">My Profile</NavDropdown.Item>
               <NavDropdown.Divider />
