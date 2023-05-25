@@ -1,22 +1,32 @@
-import React from 'react'
-import { Button, Card } from 'react-bootstrap'
+import React, { useEffect } from 'react'
+import { Button, Card, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import notes from '../../components/data/notes'
 import MainScreen from '../../components/MainScreen'
-
+import axios from 'axios'
 const MyNotes = () => {
     const deleteHandler = (id) => {
         if (window.confirm("Are you sure?")) {
         }
       };
+
+      const fetchNotes = async() => {
+        const data = await axios.get('/api/notes');
+        console.log(data);
+      };
+      useEffect(() => {
+        fetchNotes();
+      }, []);
+
   return (
     <MainScreen title="Welcome Back Aradhya Garg">
         <Link to = "createnote">
             <Button style={{marginLeft: 10, marginBottom: 6}} size="lg">
                 Create New Node
             </Button>
+            </Link>
             {notes.map((note) => (
-                <Card style={{ margin: 10 }}>
+                <Card style={{ margin: 10}}>
                 <Card.Header style={{display: "flex"}}>
                     <span style={{
                         color: "black",
@@ -38,10 +48,23 @@ const MyNotes = () => {
                         </Button>
                     </div>
                 </Card.Header>
+                <Card.Body>
+                    <h4>
+                        <Badge variant="success">
+                            Category - {note.category}
+                        </Badge>
+                    </h4>
+                    <blockquote className='blockqoute mb-0'>
+                        <p>
+                            {note.content}
+                        </p>
+                        <footer className='blockquote-footer'>
+                            Created On - data
+                        </footer>
+                    </blockquote>
+                </Card.Body>
             </Card>
             ))}
-            
-        </Link>
     </MainScreen>
   )
 }
